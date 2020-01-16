@@ -1,4 +1,4 @@
-package com.yao.app.protocol.http;
+package com.yao.app.server.http.api;
 
 import com.yao.app.biz.ServiceDelegate;
 import org.springframework.beans.factory.annotation.Autowired;

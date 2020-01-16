@@ -1,4 +1,4 @@
-package com.yao.app.system;
+package com.yao.app.config;
 
 import org.springframework.context.annotation.Configuration;
 

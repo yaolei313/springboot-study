@@ -1,4 +1,4 @@
-package com.yao.app.system;
+package com.yao.app.config;
 
 import com.yao.app.biz.HelloInterface;
 import com.yao.app.biz.ServiceDelegate;
