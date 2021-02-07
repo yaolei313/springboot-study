@@ -1,0 +1,28 @@
+<layers xmlns="http://www.springframework.org/schema/boot/layers"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/boot/layers
+                      https://www.springframework.org/schema/boot/layers/layers-2.3.xsd ">
+  <!-- defines how the application classes and resources should be layered. -->
+  <application>
+    <into layer="spring-boot-loader">
+      <include>org/springframework/boot/loader/**</include>
+    </into>
+    <into layer="application" />
+  </application>
+
+  <!-- defines how dependencies should be layered. -->
+  <dependencies>
+    <into layer="my-dependencies">
+      <include>com.yao.app*:*:*</include>
+    </into>
+    <into layer="dependencies" />
+  </dependencies>
+
+  <!-- defines the order that the layers should be written. -->
+  <layerOrder>
+    <layer>dependencies</layer>
+    <layer>spring-boot-loader</layer>
+    <layer>my-dependencies</layer>
+    <layer>application</layer>
+  </layerOrder>
+</layers>
