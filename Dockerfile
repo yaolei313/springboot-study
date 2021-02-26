@@ -15,7 +15,8 @@ COPY --from=builder ${WORK_DIR}/spring-boot-loader/ .
 COPY --from=builder ${WORK_DIR}/red-dependencies/ .
 COPY --from=builder ${WORK_DIR}/application/ .
 
-CMD ["java ",
+# CMD和ENTRYPOINT区别，都支持exec模式和shell模式,exec模式pid=1就是任务进程
+CMD ["java",
   "-XX:+UnlockExperimentalVMOptions",
   "-XX:+UseCGroupMemoryLimitForHeap",
   "-Xms2g",
