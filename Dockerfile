@@ -33,14 +33,8 @@ CMD ["java", \
   "-XX:+UseG1GC", \
   "-XX:MaxGCPauseMillis=100", \
   "-XX:+ParallelRefProcEnabled",  \
-  "-XX:G1LogLevel=finest", \
-  "-Xloggc:/data/log/gc.log", \
+  "-Xlog:all=info:file=/data/log/gc-%p.log,filesize=100M,filecount=5:time,level,tags", \
   "-XX:+PrintCommandLineFlags", \
-  "-XX:+PrintGCDetails", \
-  "-XX:+PrintGCDateStamps", \
-  "-XX:+PrintTenuringDistribution", \
-  "-XX:+PrintReferenceGC", \
-  "-XX:+PrintAdaptiveSizePolicy", \
   "-XX:+HeapDumpOnOutOfMemoryError", \
   "-XX:HeapDumpPath=/data/log/dumps", \
   "-XX:ErrorFile=/data/log/piderrors.log", \
