@@ -22,7 +22,7 @@ RUN mkdir -p /data/log
 # CMD和ENTRYPOINT区别，都支持exec模式和shell模式,exec模式pid=1就是任务进程
 CMD ["java", \
   "-XX:+UnlockExperimentalVMOptions", \
-  "-XX:+UseCGroupMemoryLimitForHeap", \
+  "-XX:+UseContainerSupport", \
   "-Xms2g", \
   "-Xmx2g", \
   "-XX:MetaspaceSize=128M", \
