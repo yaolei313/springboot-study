@@ -33,7 +33,7 @@ CMD ["java", \
   "-XX:+UseG1GC", \
   "-XX:MaxGCPauseMillis=100", \
   "-XX:+ParallelRefProcEnabled",  \
-  "-Xlog:all=info:file=/data/log/gc-%p.log,filesize=100M,filecount=5:time,level,tags", \
+  "-Xlog:gc*=info,gc+age*=debug,gc+ref*=debug,gc+ergo*=debug:file=/data/log/gc.log:time,level,tags", \
   "-XX:+PrintCommandLineFlags", \
   "-XX:+HeapDumpOnOutOfMemoryError", \
   "-XX:HeapDumpPath=/data/log/dumps", \
