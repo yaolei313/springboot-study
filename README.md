@@ -35,11 +35,12 @@ CMD ["java", \
 
 ### OpenJDK11
 * docker
--XX:+UseContainerSupport
+-XX:+UseContainerSupport  使用容器的cpu和memory限制
 
 ```
 java -XX:+UnlockExperimentalVMOptions \
   -XX:+UnlockDiagnosticVMOptions \
+  -XX:NativeMemoryTracking=summary \
   -Xms2g \
   -Xmx2g \
   -XX:MetaspaceSize=128M \
@@ -61,3 +62,4 @@ java -XX:+UnlockExperimentalVMOptions \
   -jar springboot-study-0.0.1-SNAPSHOT.jar \
   --spring.profiles.active=prod
 ```
+启用本地内存跟踪：-XX:NativeMemoryTracking=off | sumary | detail。默认off

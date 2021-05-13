@@ -23,6 +23,7 @@ RUN mkdir -p /data/log
 CMD ["java", \
   "-XX:+UnlockExperimentalVMOptions", \
   "-XX:+UseContainerSupport", \
+  "-XX:NativeMemoryTracking=summary", \
   "-Xms2g", \
   "-Xmx2g", \
   "-XX:MetaspaceSize=128M", \
