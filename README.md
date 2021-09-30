@@ -37,6 +37,8 @@ CMD ["java", \
 * docker
 -XX:+UseContainerSupport  使用容器的cpu和memory限制
 
+https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-BE93ABDC-999C-4CB5-A88B-1994AAAC74D5
+
 ```
 java -XX:+UnlockExperimentalVMOptions \
   -XX:+UnlockDiagnosticVMOptions \
@@ -51,7 +53,7 @@ java -XX:+UnlockExperimentalVMOptions \
   -XX:+UseG1GC \
   -XX:MaxGCPauseMillis=100 \
   -XX:+ParallelRefProcEnabled  \
-  -Xlog:gc*=info,gc+age*=debug,gc+ref*=debug,gc+ergo*=debug:file=/tmp/gc.log:time,level,tags \
+  -Xlog:gc*=info,age*=debug,ref*=debug,ergo*=debug:file=/tmp/gc.log:time,level,tags \
   -XX:+PrintCommandLineFlags \
   -XX:+HeapDumpOnOutOfMemoryError \
   -XX:HeapDumpPath=/tmp/dumps \
