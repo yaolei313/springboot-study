@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11 as builder
-MAINTAINER allen "allen@xiaohongshu.com"
+MAINTAINER yaolei03 "yaolei03@gmail.com"
 
 ARG WORK_DIR=/root
 ARG JAR_FILE=target/*.jar
