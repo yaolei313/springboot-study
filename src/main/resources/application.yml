@@ -2,6 +2,7 @@ server:
   servlet:
     context-path: /
   shutdown: graceful
+  forward-headers-strategy: framework
 
 spring:
   main:
@@ -12,6 +13,10 @@ spring:
     active: local
   lifecycle:
     timeout-per-shutdown-phase: 10s
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
 
 # Actuator endpoints
 management:

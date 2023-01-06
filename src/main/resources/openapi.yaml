@@ -1,0 +1,57 @@
+openapi: 3.0.3
+  paths:
+info:
+  title: springboot study
+  description: ###This is a sample server for a study project.
+  termsOfService: https://www.example.com/terms/
+  contact:
+    name: api support
+    email: support@app.yao.com
+    url: https://www.example.com/support/
+  license:
+    name: apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1-SNAPSHOT
+
+servers:
+  - url: https://api.gigantic-server.com/v1
+    description: prod server
+  - url: https://api.staging.gigantic-server.com/v1
+    description: staging server
+components:
+  schemas:
+    ResponseVo:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: 错误码
+        data:
+          type: object
+          description: 包装对象
+  responses:
+    SimpleResponse:
+      description: study response
+      content:
+        application/json:
+          schema:
+            $ref: #/components/schemas/ResponseVo
+  parameters:
+    - name: USER_AGENT
+      in: header
+      description:
+      required: true
+      schema: string
+
+
+  examples:
+  requestBodies:
+  headers:
+  securitySchemes:
+  links:
+  callbacks:
+
+

@@ -113,7 +113,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class LoginByPasswordRequest {
+public class LoginByPasswordReq {
 
     private String name;
 
