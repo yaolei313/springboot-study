@@ -59,72 +59,96 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
+    <!--
+    If you are using Lombok in your project, you need to make sure that its annotation processor runs before
+    spring-boot-configuration-processor. To do so with Maven, you can list the annotation processors
+    in the right order using the annotationProcessors attribute of the Maven compiler plugin.
+    If you are not using this attribute, and annotation processors are picked up by the dependencies available
+    on the classpath, make sure that the lombok dependency is defined before the spring-boot-configuration-processor
+    dependency.
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-properties-migrator</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-	</dependencies>
+    Spring Boot uses an annotation processor to collect the conditions on auto-configurations in a metadata file (META-INF/spring-autoconfigure-metadata.properties).
+    If that file is present, it is used to eagerly filter auto-configurations that do not match, which will improve startup time.
+    It is recommended to add the following dependency in a module that contains auto-configurations: -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <!-- You can easily generate your own configuration metadata file from items annotated
+    with @ConfigurationProperties by using the spring-boot-configuration-processor jar.
+    The jar includes a Java annotation processor which is invoked as your project is compiled.
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>repackage</id>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<layers>
-						<enabled>true</enabled>
-						<configuration>${project.basedir}/manifest/layers.xml</configuration>
-					</layers>
-				</configuration>
-			</plugin>
-			<!--<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>-->
-		</plugins>
-	</build>
+    产生文件spring-configuration-metadata.json
+    -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-properties-migrator</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.8.0</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>repackage</id>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <layers>
+            <enabled>true</enabled>
+            <configuration>${project.basedir}/manifest/layers.xml</configuration>
+          </layers>
+        </configuration>
+      </plugin>
+      <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>-->
+    </plugins>
+  </build>
 
 </project>
